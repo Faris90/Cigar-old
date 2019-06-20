@@ -126,7 +126,7 @@ GameServer.prototype.start = function() {
         this.startingFood();
 
         // Start Main Loop
-        setInterval(this.mainLoop.bind(this), 1);
+        setInterval(function(){this.mainLoop.bind(this)}, 1);
 
         // Done
         console.log("[Game:"+this.realmID+"] Game Server started at port %d", this.config.serverPort);
@@ -407,7 +407,7 @@ GameServer.prototype.mainLoop = function() {
         // Update cells/leaderboard loop
         this.tickMain++;
         if (this.tickMain >= 20) { // 1 Second
-            setTimeout(this.cellUpdateTick(), 0);
+           this.cellUpdateTick()
 
             // Update leaderboard with the gamemode's method
             this.leaderboard = [];
