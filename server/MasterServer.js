@@ -93,7 +93,7 @@ MasterServer.prototype.getNextID = function() {
 
 MasterServer.prototype.getServer = function(key) {
     var h = this.REGIONS[key][Math.floor(Math.random() * this.REGIONS[key].length)];
-    return h ? h.ip : "0.0.0.0";
+    return h ? h.ip : location.host + this.config.serverPort;
 };
 
 MasterServer.prototype.onTick = function() {
